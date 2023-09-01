@@ -1,0 +1,48 @@
+<!-- books/templates/books/book_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List</title>
+    <style>
+        table,td,th{
+        border:1px solid black;
+        border-collapse:collapse;
+        }
+        table{
+        width:100%}
+        td{
+        text-align:center;
+        padding:10px
+        }
+        .btn{
+        margin-left:700px}
+       td a{
+        color:black;
+
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Book List</h1>
+    <table>
+        <tr>
+            <th>Book</th>
+            <th>Author</th>
+            <th>Date</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+           <td>{{ book.title }} </td> <td> {{ book.author }}</td> <td> {{ book.published_date }}</td>
+            <td> <button> <a style="  text-decoration:'none';"  href="{% url 'edit_book' book.pk %}">Edit</a> </button></td>
+            <td> <button> <a style="  text-decoration:'none';"  href="{% url 'delete_book' book.pk %}">Delete </a> </button></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br> <br> <br>
+   <button class="btn"> <a href="{% url 'add_book' %}">Add Book</a> </button>
+</body>
+</html>
